@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "subscriptionId": "{subscriptionId}",
+    "resourceGroupName": "myResourceGroup",
+    "machineName": "myMachine",
+    "api-version": "2021-01-28-preview"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "relay": "relayNameSpace",
+        "hybridConnectionName": "hybridConnection",
+        "token": "relay_sas_token",
+        "expirationTime": "2017-07-21T17:32:28Z"
+      }
+    }
+  }
+}

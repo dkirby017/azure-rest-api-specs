@@ -617,6 +617,52 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/listAccessDetails": {
+      "post": {
+        "tags": [
+          "machines"
+        ],
+        "operationId": "Machines_ListAccessDetails",
+        "description": "Retrieve the access details needed to remotely connect to the Machine resource.",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "machineName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the hybrid machine."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MachineAccessDetails"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List Access Details for a Machine": {
+            "$ref": "./examples/Machines_ListAccessDetails.json"
+          }
+        }
+      }
+    },
     "/providers/Microsoft.HybridCompute/operations": {
       "get": {
         "tags": [
@@ -1093,6 +1139,32 @@
         }
       },
       "description": "Describes the Machine Extensions List Result."
+    },
+    "MachineAccessDetails": {
+      "properties": {
+        "relay": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The relay namespace."
+        },
+        "hybridConnectionName": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The name of the hybrid connection."
+        },
+        "token": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The relay SAS Token."
+        },
+        "expirationTime": {
+          "readOnly": true,
+          "type": "string",          
+          "format": "date-time",
+          "description": "The expiration time of the token."
+        }
+      },
+      "description": "The access details required to remotely connect to the machine resource."
     }
   },
   "parameters": {}
